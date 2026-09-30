@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "TypeScript extension SDK and trusted-module host for a Tauri/Monaco IDE",
   "license": "MIT",
+  "author": "4onstudios LTD",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/4onstudios/iris-extensions.git"

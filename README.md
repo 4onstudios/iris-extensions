@@ -1,6 +1,6 @@
 # Iris IDE extension SDK
 
-A TypeScript extension API and working host runtime for a Tauri, React, Monaco, terminal, and ACP chat IDE. The package name is local and unpublished. Rename it to your preferred namespace before publishing.
+A TypeScript extension API and working host runtime for [Iris IDE](https://github.com/4onstudios/iris), a Tauri, React, Monaco, terminal, and ACP chat IDE. This package is built exclusively for Iris IDE and is not intended for use in other IDEs.
 
 **This release runs trusted extensions in the same JavaScript realm as the host. Its API permission checks are not a security sandbox.** Use it for bundled extensions and trusted development modules. See [the execution boundary](docs/integration.md#execution-boundary) before accepting arbitrary third-party code.
 
@@ -53,7 +53,7 @@ The declared command appears in `host.listCommands()` before loading the extensi
 
 Iris consumes this package from the npm registry. The host adapter is `src/extensions/irisRuntime.ts`; it is mounted from both Monaco editor panes and displayed in the existing Extensions panel. The bundled `Document Info` extension demonstrates lazy command activation and a separately owned PTY terminal. See `docs/iris-integration.md` for the exact connected and pending services.
 
-## Install into another IDE
+## Install into Iris IDE
 
 ```sh
 npm install @4onstudios/iris-extensions
@@ -76,7 +76,7 @@ host.install({
 await host.start();
 ```
 
-Grants come from the IDE's extension policy, not from the extension itself. A declared permission does not grant access. The example above is sufficient for the greeting extension; [Dev Tools](examples/devtools.ts) needs the explicit grants shown in [the integration example](examples/integration.ts).
+Grants come from Iris IDE's extension policy, not from the extension itself. A declared permission does not grant access. The example above is sufficient for the greeting extension; [Dev Tools](examples/devtools.ts) needs the explicit grants shown in [the integration example](examples/integration.ts).
 
 ## API surface
 
@@ -91,7 +91,7 @@ Grants come from the IDE's extension policy, not from the extension itself. A de
 | `chat`      | Chat participants, explicit context providers, cancellable agent streams                  | `chat.register`; agent requests require `chat.use` plus agent ID allowlist |
 | `context`   | Global/workspace state, logging, subscriptions, lifetime abort signal                     | State automatically belongs to the extension ID                            |
 
-The complete public contract is [src/api.ts](src/api.ts). IDE implementation contracts are in [src/ports.ts](src/ports.ts).
+The complete public contract is [src/api.ts](src/api.ts). Iris IDE implementation contracts are in [src/ports.ts](src/ports.ts).
 
 ## Supplied adapters
 
@@ -100,7 +100,7 @@ The complete public contract is [src/api.ts](src/api.ts). IDE implementation con
 - **xterm:** connects an existing xterm instance to an existing PTY-backed terminal; input is serialized, output buffering is bounded, and listeners are disposable.
 - **Agent registry:** a host-owned catalogue for approved agents, with cancellation on removal.
 
-The core has no runtime dependencies. Monaco and xterm imports are type-only. The optional ACP connector uses `@agentclientprotocol/sdk`; declare it as a direct IDE dependency when using this adapter, even if Iris already brings it in transitively.
+The core has no runtime dependencies. Monaco and xterm imports are type-only. The optional ACP connector uses `@agentclientprotocol/sdk`; declare it as a direct dependency of Iris IDE when using this adapter, even though Iris already brings it in transitively.
 
 Development and tests pin TypeScript 5.9.3, Monaco 0.56.0, xterm 5.3.0, and ACP SDK 1.4.0. The core uses modern `AbortSignal.any`/`timeout`; use a current Tauri WebView or supply equivalent polyfills on older operating systems.
 
@@ -116,7 +116,7 @@ api.chat.registerParticipant(
 );
 ```
 
-Declare that participant in a manifest whose ID is `acme.assistant`, request `chat.register` and `chat.use`, and have the IDE grant those permissions and the `iris` agent ID. The IDE can consume it as follows:
+Declare that participant in a manifest whose ID is `acme.assistant`, request `chat.register` and `chat.use`, and have Iris IDE grant those permissions and the `iris` agent ID. Iris IDE can consume it as follows:
 
 ```ts
 const abort = new AbortController();
@@ -134,7 +134,7 @@ for await (const chunk of host.streamChat(
 // A Stop button calls abort.abort(). Dispose the stream when its view goes away.
 ```
 
-An attachment provider is invoked only when the IDE explicitly asks for it. The SDK does not automatically send the current file, terminal contents, or entire workspace to a model.
+An attachment provider is invoked only when Iris IDE explicitly asks for it. The SDK does not automatically send the current file, terminal contents, or entire workspace to a model.
 
 ## Lifecycle and compatibility
 
