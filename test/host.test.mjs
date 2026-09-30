@@ -5,8 +5,8 @@ import {
   disposable,
   Emitter,
   parseManifest,
-} from "@iris-ide/extensions";
-import { ExtensionHost } from "@iris-ide/extensions/host";
+} from "@4onstudios/iris-extensions";
+import { ExtensionHost } from "@4onstudios/iris-extensions/host";
 import { memoryServices } from "../examples/memory-services.mjs";
 import { deferred, manifest, tick, collect } from "./helpers.mjs";
 

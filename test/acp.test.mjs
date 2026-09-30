@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { agent } from "@agentclientprotocol/sdk";
-import { AcpChatAgent, connectAcp } from "@iris-ide/extensions/adapters/acp";
+import { AcpChatAgent, connectAcp } from "@4onstudios/iris-extensions/adapters/acp";
 import { deferred, tick, collect } from "./helpers.mjs";
 
 const request = { conversationId: "thread", prompt: "Hello" };

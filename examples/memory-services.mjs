@@ -1,4 +1,4 @@
-import { disposable, Emitter } from "@iris-ide/extensions";
+import { disposable, Emitter } from "@4onstudios/iris-extensions";
 
 /** In-memory demo/test fixture. Not a filesystem, PTY, or production persistence layer. */
 export function memoryServices() {

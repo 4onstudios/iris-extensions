@@ -1,11 +1,11 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { Emitter } from "@iris-ide/extensions";
+import { Emitter } from "@4onstudios/iris-extensions";
 import {
   createMonacoPorts,
   toMonacoRange,
-} from "@iris-ide/extensions/adapters/monaco";
-import { bindXterm } from "@iris-ide/extensions/adapters/xterm";
+} from "@4onstudios/iris-extensions/adapters/monaco";
+import { bindXterm } from "@4onstudios/iris-extensions/adapters/xterm";
 import { deferred, tick } from "./helpers.mjs";
 
 function fakeMonaco(initial = "a😀b\r\nnext\n") {

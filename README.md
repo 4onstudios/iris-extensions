@@ -21,8 +21,8 @@ The demo uses an explicitly mocked chat agent and an in-memory terminal. It does
 ## Write an extension
 
 ```ts
-import { defineExtension } from "@iris-ide/extensions";
-import type { ExtensionManifest } from "@iris-ide/extensions";
+import { defineExtension } from "@4onstudios/iris-extensions";
+import type { ExtensionManifest } from "@4onstudios/iris-extensions";
 
 export const manifest = {
   id: "acme.hello",
@@ -51,20 +51,18 @@ The declared command appears in `host.listCommands()` before loading the extensi
 
 ## Bundled with Iris
 
-Iris consumes this package as a pinned HTTPS tarball of this repository. The host adapter is `src/extensions/irisRuntime.ts`; it is mounted from both Monaco editor panes and displayed in the existing Extensions panel. The bundled `Document Info` extension demonstrates lazy command activation and a separately owned PTY terminal. See `docs/iris-integration.md` for the exact connected and pending services.
+Iris consumes this package from the npm registry. The host adapter is `src/extensions/irisRuntime.ts`; it is mounted from both Monaco editor panes and displayed in the existing Extensions panel. The bundled `Document Info` extension demonstrates lazy command activation and a separately owned PTY terminal. See `docs/iris-integration.md` for the exact connected and pending services.
 
 ## Install into another IDE
 
-Install a pinned commit of this repository. The HTTPS tarball form needs no Git client or SSH credentials, so it also works in CI:
-
 ```sh
-npm install https://github.com/4onstudios/iris-extensions/archive/<commit-sha>.tar.gz
+npm install @4onstudios/iris-extensions
 ```
 
-Because consumers install this repository directly rather than a registry release, the compiled output in `dist/` is committed so that the package entry points resolve without a build step. Run `npm run build` and commit `dist/` alongside any source change. `private: true` intentionally prevents accidental registry publication.
+`dist/` is built by the `prepare` script and published in the registry tarball, so it is not tracked in Git. Run `npm run build` locally before running the examples directly.
 
 ```ts
-import { ExtensionHost } from "@iris-ide/extensions/host";
+import { ExtensionHost } from "@4onstudios/iris-extensions/host";
 import extension, { manifest } from "./my-extension.js";
 
 // services is your implementation of HostServices. See examples/integration.ts.

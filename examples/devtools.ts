@@ -1,5 +1,5 @@
-import { defineExtension } from "@iris-ide/extensions";
-import type { ExtensionManifest } from "@iris-ide/extensions";
+import { defineExtension } from "@4onstudios/iris-extensions";
+import type { ExtensionManifest } from "@4onstudios/iris-extensions";
 
 export const manifest = {
   id: "4onstudios.devtools",

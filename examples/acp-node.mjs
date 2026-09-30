@@ -2,7 +2,7 @@ import { spawn } from "node:child_process";
 import { once } from "node:events";
 import { Readable, Writable } from "node:stream";
 import { ndJsonStream } from "@agentclientprotocol/sdk";
-import { connectAcp } from "@iris-ide/extensions/adapters/acp";
+import { connectAcp } from "@4onstudios/iris-extensions/adapters/acp";
 
 /** Optional NODE BACKEND launcher. Never import this file into the Tauri renderer.
  * `command` is your packaged Node executable; `cliPath` is iris-agent/dist/cli.js.

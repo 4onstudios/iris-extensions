@@ -1,8 +1,8 @@
-import { ExtensionHost, AgentRegistry } from "@iris-ide/extensions/host";
-import type { HostServices } from "@iris-ide/extensions/host";
-import { createMonacoPorts } from "@iris-ide/extensions/adapters/monaco";
-import type { MonacoOptions } from "@iris-ide/extensions/adapters/monaco";
-import type { ChatAgent } from "@iris-ide/extensions/host";
+import { ExtensionHost, AgentRegistry } from "@4onstudios/iris-extensions/host";
+import type { HostServices } from "@4onstudios/iris-extensions/host";
+import { createMonacoPorts } from "@4onstudios/iris-extensions/adapters/monaco";
+import type { MonacoOptions } from "@4onstudios/iris-extensions/adapters/monaco";
+import type { ChatAgent } from "@4onstudios/iris-extensions/host";
 import extension, { manifest } from "./devtools.js";
 
 /** Compose this once at application startup, outside React component render. */

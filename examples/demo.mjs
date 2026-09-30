@@ -1,4 +1,4 @@
-import { ExtensionHost } from "@iris-ide/extensions/host";
+import { ExtensionHost } from "@4onstudios/iris-extensions/host";
 import extension, { manifest } from "./devtools.ts";
 import { memoryServices } from "./memory-services.mjs";
 
