@@ -1,6 +1,6 @@
 {
   "name": "@4onstudios/iris-extensions",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "TypeScript extension SDK and trusted-module host for a Tauri/Monaco IDE",
   "license": "MIT",
   "author": "4onstudios LTD",
@@ -30,24 +30,25 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "default": "./dist/index.js"
     },
     "./host": {
       "types": "./dist/host.d.ts",
-      "import": "./dist/host.js"
+      "default": "./dist/host.js"
     },
     "./adapters/monaco": {
       "types": "./dist/adapters/monaco.d.ts",
-      "import": "./dist/adapters/monaco.js"
+      "default": "./dist/adapters/monaco.js"
     },
     "./adapters/acp": {
       "types": "./dist/adapters/acp.d.ts",
-      "import": "./dist/adapters/acp.js"
+      "default": "./dist/adapters/acp.js"
     },
     "./adapters/xterm": {
       "types": "./dist/adapters/xterm.d.ts",
-      "import": "./dist/adapters/xterm.js"
-    }
+      "default": "./dist/adapters/xterm.js"
+    },
+    "./package.json": "./package.json"
   },
   "files": [
     "dist",
