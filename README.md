@@ -51,17 +51,17 @@ The declared command appears in `host.listCommands()` before loading the extensi
 
 ## Bundled with Iris
 
-Iris consumes this package through `file:packages/extensions` and builds it before `local`, `build`, `test`, and `typecheck`. The host adapter is `src/extensions/irisRuntime.ts`; it is mounted from both Monaco editor panes and displayed in the existing Extensions panel. The bundled `Document Info` extension demonstrates lazy command activation and a separately owned PTY terminal. See `docs/iris-integration.md` for the exact connected and pending services.
+Iris consumes this package as a pinned HTTPS tarball of this repository. The host adapter is `src/extensions/irisRuntime.ts`; it is mounted from both Monaco editor panes and displayed in the existing Extensions panel. The bundled `Document Info` extension demonstrates lazy command activation and a separately owned PTY terminal. See `docs/iris-integration.md` for the exact connected and pending services.
 
 ## Install into another IDE
 
-Copy this directory into your repository, for example `packages/extensions`, then install it through your package manager's local/workspace dependency support. A simple single-repository setup is:
+Install a pinned commit of this repository. The HTTPS tarball form needs no Git client or SSH credentials, so it also works in CI:
 
 ```sh
-npm install ./packages/extensions
+npm install https://github.com/4onstudios/iris-extensions/archive/<commit-sha>.tar.gz
 ```
 
-Build the SDK first when installing from its source directory. `private: true` intentionally prevents accidental registry publication.
+Because consumers install this repository directly rather than a registry release, the compiled output in `dist/` is committed so that the package entry points resolve without a build step. Run `npm run build` and commit `dist/` alongside any source change. `private: true` intentionally prevents accidental registry publication.
 
 ```ts
 import { ExtensionHost } from "@iris-ide/extensions/host";
